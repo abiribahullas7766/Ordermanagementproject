@@ -1,0 +1,1 @@
+drop table ORDERMANAGEMENTWORK_DOCUMENT__U50666 if exists cascade ;

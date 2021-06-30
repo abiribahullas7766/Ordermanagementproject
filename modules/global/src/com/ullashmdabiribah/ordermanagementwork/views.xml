@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="ordermanagementwork_Customer" name="customer-view" extends="_local">
+        <property name="addresses" view="_minimal">
+            <property name="street"/>
+            <property name="postcode"/>
+            <property name="city"/>
+        </property>
+    </view>
+    <view entity="ordermanagementwork_LineItem" name="lineItem-view" extends="_local">
+        <property name="product" view="_minimal"/>
+    </view>
+    <view entity="ordermanagementwork_Order" name="order-view" extends="_minimal">
+        <property name="customer" view="_minimal"/>
+        <property name="lineItems" view="_minimal">
+            <property name="product" view="_minimal"/>
+        </property>
+        <property name="documents">
+            <property name="name"/>
+            <property name="file" view="_minimal"/>
+            <property name="type"/>
+        </property>
+    </view>
+    <view entity="ordermanagementwork_Document" name="document-view" extends="_local">
+        <property name="file" view="_minimal"/>
+        <property name="order" view="_minimal"/>
+    </view>
+</views>

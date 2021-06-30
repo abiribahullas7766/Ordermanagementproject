@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://entityLogItemBrowse.caption"
+        focusComponent="entityLogItemsTable"
+        messagesPack="com.ullashmdabiribah.ordermanagementwork.web.screens.entitylogitem">
+    <data readOnly="true">
+        <collection id="entityLogItemsDc"
+                    class="com.haulmont.cuba.security.entity.EntityLogItem">
+            <view extends="_local"/>
+            <loader id="entityLogItemsDl">
+                <query>
+                    <![CDATA[select e from sec$EntityLog e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="entityLogItemsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="entityLogItemsTable"
+                dataLoader="entityLogItemsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="entityLogItemsTable"
+                    width="100%"
+                    dataContainer="entityLogItemsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="eventTs"/>
+                <column id="type"/>
+                <column id="entity"/>
+                <column id="entityInstanceName"/>
+                <column id="changes"/>
+                <column id="displayedEntityName"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="entityLogItemsTable.create"/>
+                <button id="editBtn" action="entityLogItemsTable.edit"/>
+                <button id="removeBtn" action="entityLogItemsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

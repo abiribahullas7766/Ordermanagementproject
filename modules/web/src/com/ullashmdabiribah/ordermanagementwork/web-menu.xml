@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-ordermanagementwork" insertBefore="administration" caption="mainMsg://menu_config.application-ordermanagementwork">
+        <item screen="ordermanagementwork_Customer.browse"
+              caption="mainMsg://menu_config.ordermanagementwork_Customer.browse"/>
+        <item screen="ordermanagementwork_Product.browse"
+              caption="mainMsg://menu_config.ordermanagementwork_Product.browse"/>
+        <item screen="ordermanagementwork_Order.browse"
+              caption="mainMsg://menu_config.ordermanagementwork_Order.browse"/>
+        <item screen="sec$EntityLog.browse" caption="mainMsg://menu_config.sec$EntityLog.browse"/>
+        <item screen="ordermanagementwork_Document.browse"
+              caption="mainMsg://menu_config.ordermanagementwork_Document.browse"/>
+    </menu>
+</menu-config>

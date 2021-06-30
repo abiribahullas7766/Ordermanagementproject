@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="ordermanagementwork" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.ullashmdabiribah.ordermanagementwork.entity.Customer</class>
+        <class>com.ullashmdabiribah.ordermanagementwork.entity.Address</class>
+        <class>com.ullashmdabiribah.ordermanagementwork.entity.Product</class>
+        <class>com.ullashmdabiribah.ordermanagementwork.entity.LineItem</class>
+        <class>com.ullashmdabiribah.ordermanagementwork.entity.Order</class>
+        <class>com.ullashmdabiribah.ordermanagementwork.entity.Document</class>
+    </persistence-unit>
+</persistence>

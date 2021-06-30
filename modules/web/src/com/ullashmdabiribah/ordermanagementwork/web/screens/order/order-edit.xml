@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://orderEdit.caption"
+        focusComponent="form"
+        messagesPack="com.ullashmdabiribah.ordermanagementwork.web.screens.order">
+    <data>
+        <instance id="orderDc"
+                  class="com.ullashmdabiribah.ordermanagementwork.entity.Order">
+            <view extends="_local">
+                <property name="customer" view="_minimal"/>
+                <property name="lineItems" view="_minimal">
+                    <property name="product" view="_minimal"/>
+                </property>
+            </view>
+            <loader/>
+            <collection id="lineItemsDc" property="lineItems"/>
+        </instance>
+        <collection id="customersDc" class="com.ullashmdabiribah.ordermanagementwork.entity.Customer" view="_minimal">
+            <loader id="customersDl">
+                <query>
+                    <![CDATA[select e from ordermanagementwork_Customer e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="orderDc">
+            <column width="350px">
+                <lookupPickerField id="customerField" optionsContainer="customersDc" property="customer">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="open" type="picker_open"/>
+                    </actions>
+                </lookupPickerField>
+                <textField id="orderIdField" property="orderId"/>
+                <dateField id="orderDateField" property="orderDate"/>
+                <dateField id="deliveryDateField" property="deliveryDate"/>
+            </column>
+        </form>
+        <groupBox id="lineItemsBox" caption="msg://com.ullashmdabiribah.ordermanagementwork.entity/Order.lineItems">
+            <table id="lineItemsTable" dataContainer="lineItemsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="product"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="lineItemsTable.create"/>
+                    <button action="lineItemsTable.edit"/>
+                    <button action="lineItemsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+
+        
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://entityLogItemEdit.caption"
+        focusComponent="form"
+        messagesPack="com.ullashmdabiribah.ordermanagementwork.web.screens.entitylogitem">
+    <data>
+        <instance id="entityLogItemDc"
+                  class="com.haulmont.cuba.security.entity.EntityLogItem">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="entityLogItemDc">
+            <column width="350px">
+                <dateField id="eventTsField" property="eventTs"/>
+                <lookupField id="typeField" property="type"/>
+                <textField id="entityField" property="entity"/>
+                <textField id="entityInstanceNameField" property="entityInstanceName"/>
+                <textField id="changesField" property="changes"/>
+                <textField id="displayedEntityNameField" property="displayedEntityName"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
